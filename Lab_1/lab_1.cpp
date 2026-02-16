@@ -117,7 +117,7 @@ class Train{
                 <<"Количество мест в поезде: "<<numberCommonPlaces<<endl
                 <<"Плацкарт: "<<numberReservedSeat<<endl<<"Купе: "<<numberCompartments<<endl;
         } 
-        ~Train();
+        ~Train(){};
 };
 
 Train::Train():destination("Неизвестно"),trainNumber(1),timeHour(0),
@@ -180,8 +180,6 @@ void Train::setNumberReservedSeat(int nrs){
         cout<<"Не указано мест плацкарт в поезде, устано значение по умолчанию.\n";
     }
 }
-
-Train::~Train(){}
 
 int main(){
     int size;
