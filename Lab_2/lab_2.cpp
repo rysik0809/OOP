@@ -63,6 +63,32 @@ class Train{
             return *this;
         }
 
+
+
+
+
+        Train& operator+=(const Train& train){
+            trainNumber += train.trainNumber;
+            timeHour += train.timeHour;
+            timeMinute += train.timeMinute;
+            numberCommonPlaces += train.numberCommonPlaces;
+            numberCompartments += train.numberCompartments;
+            numberReservedSeat += train.numberReservedSeat;
+            return *this;
+        }
+        Train& operator-=(const Train& train){
+            trainNumber -= train.trainNumber;
+            timeHour -= train.timeHour;
+            timeMinute -= train.timeMinute;
+            numberCommonPlaces -= train.numberCommonPlaces;
+            numberCompartments -= train.numberCompartments;
+            numberReservedSeat -= train.numberReservedSeat;
+            return *this;
+        }
+
+
+
+
         Train(const string& d, int tn, int th, int tm, int ncp, int nc, int nrs){
             if(!d.empty()){
                 destination = d;
@@ -240,6 +266,8 @@ int main(){
         cout<<"6. Вывести список поездов, следующих до заданного пункта и с одинаковой вместимостью\n";
         cout<<"7. Сравнить два поезда (использование операторов == и !=)\n";
         cout<<"8. Вывести информацию о поезде через Observer (дружественный метод)\n";
+        cout<<"9. Проверка +=\n";
+        cout<<"10. Проверка -=\n";
         cout<<"0. Выход\n";
         cout<<"Выберите действие: ";
         cin>>controller;
@@ -387,13 +415,27 @@ int main(){
             case 8:
                 {
                     int idx;
-                    cout<<"Введите номер поезда для просмотра через Observer (1-"<<size<<"): ";
+                    cout<<"Введите номер поезда для просмотра (1-"<<size<<"): ";
                     cin>>idx;
                     if (idx < 1 || idx > size) {
                         cout<<"Некорректный номер!\n";
                         break;
                     }
                     Observer::GetInfo(trains[idx-1]); 
+                }
+                break;
+            case 9:
+                {
+                    cout<<"Проверка += ";
+                    trains[0] += trains[1];
+                    trains[0].getTrain();
+                }
+                break;
+            case 10:
+                {
+                    cout<<"Проверка -= ";
+                    trains[0] -= trains[1];
+                    trains[0].getTrain();
                 }
                 break;
             case 0:
